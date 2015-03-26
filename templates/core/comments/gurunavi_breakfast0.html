@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru4.png' %}" style="width: 70px;"/>
+    </div>
+    <div style="display: table-cell; padding-left: 10px; font-size: 13px;">
+        {% if not related_urls.meal_url %}
+            <a target="_blank" href="{{ shop_url }}"><img src="{{ image_url }}" style="75%;"></a>
+        {% else %}
+            <a target="_blank" href="{{ shop_url }}"><img src="{{ related_urls.meal_url }}" style="75%;"></a>
+        {% endif %}
+        <br>
+        <span style="font-size: 16px; color: red;">美味！</span>
+        <span style="font-size: 18px">{{ name }}</span>
+        で
+        <span style="font-size:16px; color: #00d122">{{ meal_category }}食べてみたケロ！</span>
+        ぜひ早起きして行ってみて欲しいケロ〜。
+        <span style="font-size: 10px;">(画像：<a href="{{ shop_url }}" style="font-size: 10px;">ぐるなび</a>)</span>
+    </div>
+</div>
+{% elif posted_to == 'twitter'%}
+美味！{{ name }}で{{ meal_category }}食べてみたケロ！ぜひ早起きして行ってみて欲しいケロ〜。写真は，「ぶらサボり」で確認するケロ〜。
+{% endif %}

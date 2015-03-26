@@ -1,0 +1,18 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == "twitter" %}今日は，忙しい君に変わって僕が旅に出るケロ。楽しい場所や美味しいお店を発見してレポートするケロから、楽しみに待ってるケロ！
+{% elif posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru.png' %}" style="width: 70px; vertical-align: top;"/>
+    </div>
+    <div style="display:table-cell;  padding-left: 10px; vertical-align: middle; font-size: 13px; ">
+        今日は，<span style="font-size: 16px">忙しい君に変わって僕が旅に出るケロ</span>。
+        <span style="font-size: 16px; color: #00d122;">楽しい場所や美味しいお店を発見してレポートするケロ</span>から、
+        <span style="font-size: 16px;">楽しみに待ってるケロ！</span>
+        <span style="font-size: 16px; color: red">「レポートを更新する」ボタンを押す</span>か、
+        「ブラウザのリロードボタン」を押すと
+        <span style="font-size: 16px;">最新のレポートが表示されるケロ！</span>
+    </div>
+</div>
+{% endif %}

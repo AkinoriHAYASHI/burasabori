@@ -1,0 +1,129 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<html>
+    <head>
+        <title>ぶらサボり</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="keywords" content="ぶらり,サボり,旅"/>
+        <meta name="author" content="Narumi Tomiyama">
+        <meta name="author" content="Junya Kaneko">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.structure.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.theme.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/start_journey.css' %}"/>
+        <script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script>
+            {% include 'core/html/js/show_loading_icon.js' %}
+            {% include 'core/html/js/footer.js' %}
+            {% include 'core/html/js/journey_report.js' %}
+            {% include 'core/html/js/reset_journey.js' %}
+            $(function(){
+                $("#contents").on("DOMSubtreeModified", function(){
+                    set_footer();
+                });
+
+                $(window).resize(function(){
+                    set_footer();
+                });
+
+                $('#wrapper').fadeIn();
+
+                show_posts();
+            });
+        </script>
+
+        <style>
+            #contents {
+                padding-top: 20px;
+            }
+
+            #contents > div:first-child {
+                margin-top: 20px;
+            }
+
+            .category {
+                margin-bottom: 20px;
+                padding-left: 3%;
+                padding-right: 3%;
+                text-align: left;
+            }
+
+            .category > div {
+                font-size: 14px;
+            }
+
+            .category > div > a {
+                font-size: 14px;
+                color: blue;
+            }
+
+            #footer {
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="#wrapper">
+            <div id="header">
+                <img style="width: 100%;" src="{% static 'img/start_journey_header.png' %}">
+            </div>
+
+            <div id="contents">
+                利用規約
+                <div class="category">
+                    ・ソースコードライセンスについて
+                    <div>
+                        本ソフトウェアにおいて、ソースコードというときには、拡張子が.pyである全てのファイルの事を指すとします。
+                        本ソフトウェアのソースコードはフリーソフトウェア財団によって公開・維持されている GPL Version 3 ライセンス
+                        を採用しています。ライセンスについては
+                        <a href="http://www.gnu.org/licenses/gpl-3.0.html" rel="nofollow">http://www.gnu.org/licenses/gpl-3.0.html</a>
+                        をご覧ください。
+                    </div>
+                </div>
+
+                <div class="category">
+                    ・著作権について
+                    <div>
+                        当Webサイトの文字情報・イラストや写真などの画像等は著作権によって保護されており、
+                        権利者の許可なく複製、転用、販売などの二次利用をすることを固く禁じます。
+                        また、HTMLやJavascriptファイル等、拡張子が.py意外の全ての文書は著作権によって保護されており、
+                        権利者の許可なく複製、転用、販売などの二次利用をすることを固く禁じます。
+                    </div>
+                </div>
+                <div class="category">
+                    <div>
+                        本規約は，予告無く変更されることがあります。
+                    </div>
+                </div>
+                <div class="category">
+                    <div>
+                        「ぶらサボり」<br/>
+                        オープンデータを用いたリアルタイム日記生成アプリケーション
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div>
+                        Copyright (C) 2014 Morning Project Samurai
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <div id="footer_links">
+                    <a target="_blank" href="{% url 'core:start_journey' %}">トップ</a>
+                    <a target="_blank" href="{% url 'core:start_journey' %}" onclick="reset_journey()">新たにぶらサボる</a>
+                    <a href="{% url 'core:licence' %}">利用規約</a>
+                    <a href="http://mpsamurai.org/bura_tech/">ぶらTech</a>
+                    <a href="http://projectsamurai.web.fc2.com/">MPS</a>
+                </div>
+                <p id="copy_right">2014 (c) Morning Project Samurai All Right Received.</p>
+            </div>
+        </div>
+    </body>
+</html>

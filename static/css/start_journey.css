@@ -1,0 +1,12 @@
+
+#nav > div > a > img {
+    width: 100%;
+}
+
+#introduction > div > img {
+    width: 100%;
+}
+
+#initial_settings > form > div {
+    margin-bottom: 10px;
+}

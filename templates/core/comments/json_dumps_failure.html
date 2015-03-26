@@ -1,0 +1,12 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru7.png' %}" style="width: 70px;"/>
+    </div>
+<div style="display: table-cell; padding-left: 10px; font-size: 16px; font-weight: bold;">
+ケロケロ。
+</div>
+</div>
+{% elif posted_to == 'twitter'%}ケロケロ。{% endif %}

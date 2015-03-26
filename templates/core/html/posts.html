@@ -1,0 +1,19 @@
+{% load staticfiles %}
+{% load i18n %}
+
+{% for post in posts %}
+    <div id="{{ post.post_id }}" class="post">
+        <div class="pub_date">{{ post.pub_time|date:'Y年n月j日(D)' }} {{ post.pub_time|time:'P' }}</div>
+        <div class="body">
+            <div class="comment">{{ post.burasabori_comment | safe }}</div>
+            <div class="sns_buttons" align="right">
+                <a class="twitter-share-button" href="https://twitter.com/share"
+                   data-lang="ja"
+                   data-related="MPS03075718"
+                   data-hashtags="ぶらさぼり, 東京メトロ・オープンデータコンテスト"
+                   data-url="http://mpsamurai.org/burasabori{% url 'core:journey_report' %}?avatar={{ post.avatar_id }}#{{ post.post_id }}"
+                   data-text="ぼく，ぶらガエル。{{ post.twitter_comment }}">Tweet</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}

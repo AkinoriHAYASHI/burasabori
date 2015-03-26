@@ -1,0 +1,74 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<!-- Authors: Narumi Tomiyama, Junya Kaneko -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ぶらサボり</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="keywords" content="ぶらり,サボり,旅"/>
+        <meta name="author" content="Narumi Tomiyama">
+        <meta name="author" content="Junya Kaneko">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.structure.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.theme.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/journey_report.css' %}"/>
+        <script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script>
+            {% include 'core/html/js/show_loading_icon.js' %}
+            {% include 'core/html/js/footer.js' %}
+            {% include 'core/html/js/journey_report.js' %}
+            {% include 'core/html/js/reset_journey.js' %}
+            $(function(){
+                $("#contents").on("DOMSubtreeModified", function(){
+                    set_footer();
+                });
+
+                $(window).resize(function(){
+                    set_footer();
+                });
+
+                $('#wrapper').fadeIn();
+
+                show_posts();
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="title_images">
+                    <div id="logo">
+                        <img src="{% static 'img/small_logo.png' %}" alt="ぶらサボリロゴ"/>
+                    </div>
+                    <div id="character">
+                        <a href="#" onclick="show_posts()">
+                            <img src="{% static 'img/reload.png' %}" alt="リロードボタン"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contents">
+                <div id="posts"></div>
+            </div>
+
+            <div id="footer">
+                <div id="footer_links">
+                    <a target="_blank" href="{% url 'core:start_journey' %}">トップ</a>
+                    <a target="_blank" href="{% url 'core:start_journey' %}" onclick="reset_journey()">新たにぶらサボる</a>
+                    <a href="{% url 'core:licence' %}">利用規約</a>
+                    <a href="http://mpsamurai.org/bura_tech/">ぶらTech</a>
+                    <a href="http://projectsamurai.web.fc2.com/">MPS</a>
+                </div>
+                <p id="copy_right">2014 (c) Morning Project Samurai.</p>
+            </div>
+        </div>
+    </body>
+</html>

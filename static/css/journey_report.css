@@ -1,0 +1,78 @@
+
+#header {
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 65px;
+    border:1px solid #EEE;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px inset;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px inset;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px inset;
+
+    /* Firefox */
+    background: -moz-linear-gradient(top center, #7EFCF9 0%, #FFF 100%);
+    /* Chrome, Safari */
+    background: -webkit-gradient(linear, center top, center bottom, from(#7EFCF9), to(#FFF));
+    /* Others */
+    background: linear-gradient(top center, #7EFCF9 0%, #FFFFFF 100%);
+
+    opacity: 0.90;
+}
+
+
+#title_images {
+    padding-top: 5px;
+    vertical-align: middle;
+}
+
+#logo {
+    vertical-align: middle;
+}
+
+#logo > img {
+    width: 130px;
+    padding-left: 5px;
+}
+
+#character > a > img {
+    width: 60px;
+    padding-right: 10px;
+}
+
+#contents{
+    padding-top: 65px;
+}
+
+.post {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.pub_date {
+    background-color:#FFFFCC;
+    font-size:13px;
+    color: #555;
+    padding-top: 3px;
+    padding-left: 3%;
+}
+
+.body {
+    background-color:#FFCC99;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 5px;
+}
+
+.sns_buttons {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.sns_buttons > img {
+    height: 20px;
+    margin-right: 15px;
+}

@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style=    "display: table;"    >
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru2.png' %}" style="width: 70px;"/>
+    </div>
+    <div style="display: table-cell; padding-left: 10px; font-size: 13px;">
+        <a target="_blank" href="{{ photo_url }}"><img src="{{ photo_url }}" style="width: 75%;"></a>
+        <br>
+        <span style="font-size: 18px;">絶景カナ！</span>
+        <span style="font-size: 18px; color: red;">{{ landmark }}にきた</span><span style="font-size: 14px;">ケロ！</span>
+        <span style="font-size: 12px;">(画像：<a href="{{user_url}}" style="font-size: 10px;">flickr, {{ user }}</a>)</span>
+    </div>
+</div>
+{% elif posted_to == 'twitter'%}絶景カナ！{{ landmark }}にきたケロ！写真は，「ぶらサボり」で確認するケロ〜。{% endif %}

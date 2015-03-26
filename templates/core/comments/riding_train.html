@@ -1,0 +1,13 @@
+﻿{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru3.png' %}" style="width: 70px; vertical-align: top;"/>
+    </div>
+    <div style="display:table-cell;  padding-left: 10px; vertical-align: middle; font-size: 13px; ">
+        <span style="font-size: 16px">{{ station }}</span> から
+        <span style="font-size: 16px;">{{ railway }} {{ direction }}行きに乗ってみた</span>ケロ！
+    </div>
+</div>
+{% elif posted_to == 'twitter' %}{{ station }} から {{ railway }} {{ direction }}行きに乗ってみたケロ！{% endif %}

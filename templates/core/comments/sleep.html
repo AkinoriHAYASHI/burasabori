@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru9.png' %}" style="width: 70px; vertical-align: top;"/>
+    </div>
+    <div style="display:table-cell;  padding-left: 10px; vertical-align: middle; font-size: 13px; ">
+        今日も１日 <span style="font-size: 16px; color:deeppink; font-weight: bold;">お疲れ様</span> ケロ。
+        僕のレポート、楽しんでもらえたケロ？
+        <span style="font-size: 16px;">少しでも、お役にたてていたら嬉しいケロ。</span>
+        またレポートさせてくれると嬉しいケロ^ ^。
+        <span style="font-size: 16px; color:#00d122; font-weight: bold">Have a good night ケロ〜。</span>
+    </div>
+</div>
+{% elif posted_to == 'twitter' %}今日も１日お疲れ様ケロ。僕のレポート、楽しんでもらえたケロ？少しでも、お役にたてていたら嬉しいケロ。またレポートさせてくれると嬉しいケロ^^。Have a good night ケロ〜。{% endif%}

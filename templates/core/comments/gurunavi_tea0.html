@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru5.png' %}" style="width: 70px;"/>
+    </div>
+    <div style="display: table-cell; padding-left: 10px; font-size: 13px;">
+        <a target="_blank" href="{{ shop_url }}"><img src="{{ image_url }}" style="width:75%"></a>
+        {% if related_urls.meal_url %}
+        <a target="_blank" href="{{ shop_url }}"><img src="{{ related_urls.meal_url }}" style="width:75%"></a>
+        {% endif %}
+        <br>
+        <span style="font-size: 16px; color: #00d122;">落ち着くケロ〜。</span>
+        <span style="font-size: 16px; color: #00d122">{{ name }}</span>
+        で
+        <span style="font-size: 14px;">休憩してみたケロ。</span>
+        <span style="font-size: 14px; color: pink">あなたも一緒にちょっと休憩するケロよ。</span>
+        <span style="font-size: 10px;">(画像：<a target="_blank" href="{{shop_url}}" style="font-size: 10px;">ぐるなび</a>)</span>
+    </div>
+</div>
+{% elif posted_to == 'twitter'%}落ち着くケロ〜。{{ name }}で休憩してみたケロ。あなたも一緒にちょっと休憩するケロよ。詳細は，「ぶらサボり」で確認ケロ^ ^。{% endif %}

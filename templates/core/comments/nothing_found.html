@@ -1,0 +1,12 @@
+{% load staticfiles %}
+{% load i18n %}
+{% if posted_to == 'burasabori' %}
+<div style="display: table;">
+    <div style="display: table-cell">
+        <img src="{% static 'img/talk_kaeru8.png' %}" style="width: 70px; vertical-align: top;"/>
+    </div>
+    <div style="display:table-cell;  padding-left: 10px; vertical-align: middle; font-size: 13px; ">
+        今回は，なにも発見できなかったケロ。。。<span font-size="16px">乞うご期待ケロ！</span>
+    </div>
+</div>
+{% elif posted_to == 'twitter'%}今回は，なにも発見できなかったケロ。。。乞うご期待ケロ！{% endif %}

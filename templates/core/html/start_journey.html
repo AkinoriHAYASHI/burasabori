@@ -1,0 +1,219 @@
+﻿{% load staticfiles %}
+{% load i18n %}
+
+<!-- Authors: Masaki Takahashi, Narumi Tomiyama, Junya Kaneko -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ぶらサボり</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="keywords" content="ぶらり,サボり,旅"/>
+        <meta name="author" content="Masaki Takahashi">
+        <meta name="author" content="Narumi Tomiyama">
+        <meta name="author" content="Junya Kaneko">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.structure.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.theme.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/start_journey.css' %}"/>
+        <script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script>
+            {% include 'core/html/js/show_loading_icon.js' %}
+            {% include 'core/html/js/footer.js' %}
+            {% include 'core/html/js/start_journey.js' %}
+            {% include 'core/html/js/load_own_journey.js' %}
+
+            load_own_journey();
+
+            $(function(){
+                $("#submit_settings").hide();
+                show_railway_settings();
+
+                $("#contents").on("DOMSubtreeModified", function(){
+                    set_footer();
+                });
+
+                $(window).resize(function(){
+                    set_footer();
+                });
+
+                set_initial_settings_form_submit();
+
+                $('#what_is_it_modal').dialog({
+                    autoOpen: false,
+                    title: '「ぶらサボり」について',
+                    closeOnEscape: true,
+                    modal: true,
+                    buttons: {
+                        "もどる": function(){
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+
+                $('#how_to_start_modal').dialog({
+                    autoOpen: false,
+                    title: 'はじめかた',
+                    closeOnEscape: true,
+                    modal: true,
+                    buttons: {
+                        "もどる": function(){
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+
+                $('#how_to_use_modal').dialog({
+                    autoOpen: false,
+                    title: 'たのしみかた',
+                    closeOnEscape: true,
+                    modal: true,
+                    buttons: {
+                        "もどる": function(){
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+
+                $('#useful_info_modal').dialog({
+                    autoOpen: false,
+                    title: 'ベンリな使いかた',
+                    closeOnEscape: true,
+                    modal: true,
+                    buttons: {
+                        "もどる": function(){
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+
+                $('#wrapper').fadeIn();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <img style="width: 100%;" src="{% static 'img/start_journey_header.png' %}">
+            </div>
+
+            <div id="nav">
+                <div><a href="#" onclick="$('#what_is_it_modal').dialog('open');"><img src="{% static 'img/what_is_it.png' %}"/></a></div>
+                <div><a href="#" onclick="$('#how_to_start_modal').dialog('open');"><img src="{% static 'img/how_to_start.png' %}"/></a></div>
+                <div><a href="#" onclick="$('#how_to_use_modal').dialog('open');"><img src="{% static 'img/how_to_enjoy.png' %}"/></a></div>
+                <div><a href="#" onclick="$('#useful_info_modal').dialog('open');"><img src="{% static 'img/useful_info.png' %}"/></a></div>
+            </div>
+
+            <div id="contents">
+                <div id="introduction">
+                    <div><img src="{% static 'img/introduction.png' %}"/></div>
+                </div>
+
+                <div id="initial_settings">
+                    <form id="initial_settings_form" action="{% url  'core:create_avatar' %}" method="get">
+                        <div id="railway_settings"></div>
+
+                        <div id="station_settings"></div>
+
+                        <div id="submit_settings">
+                            <input type="submit" value="ぶらサボる"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="footer">
+                <div id="footer_links">
+                    <a target="_blank" href="{% url 'core:start_journey' %}">トップ</a>
+                    <a href="{% url 'core:licence' %}">利用規約</a>
+                    <a href="http://mpsamurai.org/bura_tech/">ぶらTech</a>
+                    <a href="http://projectsamurai.web.fc2.com/">MPS</a>
+                </div>
+                <p id="copy_right">2014 (c) Morning Project Samurai.</p>
+            </div>
+
+            <div id="what_is_it_modal" style="font-weight: bold;">
+                <p style="font-size: 16px;">
+                    <img src="{% static 'img/logo.png' %}" style="height: 24px;"/> は、<br/>
+                    <span style="font-weight: bold; color: darkorange;">癒し系なリアルタイム名所発見</span><br/>
+                    アプリです。
+                </p>
+                <p style="font-size: 16px; margin-top: 12px;">
+                    <span style="font-weight: bold; color: limegreen;"><img src="{% static 'img/kaeru_small.png' %}" style="height: 32px;">ぶらガエルくん</span> が、<br/>
+                    <span style="font-weight: bold; color: #00AEDB;">東京メトロ</span>に乗り、あなたに代わって
+                    <span style="font-weight: bold; color: red;">楽しい場所やおいしいお店</span>
+                    を見つけて<span style="font-weight: bold; color: darkorange;">レポート</span>してくれます。
+                </p>
+                <p style="margin-top: 12px; font-size: 12px;">
+                    <span style="color: hotpink; font-size: 12px;">興味がわいたら、ぜひ実際に行ってみてくださいね^ω^。</span>
+                </p>
+            </div>
+
+            <div id="how_to_start_modal" style="font-weight: bold;">
+                <p style="font-size: 16px;">
+                    1. <span style="font-weight: bold; color: darkorange;">あなたが気になる</span>
+                    <span style="font-weight: bold; color: #00AEDB;">東京メトロ</span>
+                    <span style="font-weight: bold; color: darkorange;">の駅</span>を
+                    1つ思い浮かべてください。
+                </p>
+                <p style="font-size: 16px; margin-top: 10px;">
+                    2. 路線名、駅名の順番で、<span style="font-weight: bold; color: darkorange;">その駅を選んで</span>ください。
+                </p>
+                <p style="font-size: 16px; margin-top: 10px;">
+                    3. あとは
+                    <span style="font-weight: bold; color: deeppink;">「ぶらサボる」ボタンを押す</span>
+                    だけ！
+                </p>
+                <p style="font-size: 12px; margin-top: 10px;">
+                    選んだ駅から、<span style="font-weight: bold; color: limegreen;"><img src="{% static 'img/kaeru_small.png' %}" style="height: 32px;">ぶらガエルくん</span>
+                    が旅に出て、自動的に旅レポートのページに切り替わります。
+                </p>
+            </div>
+
+            <div id="how_to_use_modal" style="font-weight: bold;">
+                <p style="font-size: 16px;">
+                    <span style="font-weight: bold; color: limegreen;">
+                        <img src="{% static 'img/kaeru_small.png' %}" style="height: 32px;">ぶらガエルくん</span> は、<br/>
+                    <span style="font-weight: bold; color: darkorange;">15分に1度くらいレポート</span><br/>
+                    してくれます。
+                </p>
+                <p style="font-size: 16px; margin-top: 10px;">
+                    <span style="font-weight: bold; color: red;"><img src="{% static 'img/reload.png' %}" style="height: 48px;">を押して、ページを更新</span> してください。
+                </p>
+                <p style="font-size: 16px; margin-top: 10px;">
+                    <span style="font-weight: bold; color: deeppink;">新しくぶらサボる</span>
+                    を押すと，ぶらガエルくんが<span style="font-weight: bold; color: darkorange;">新たな旅にでます</span>。
+                    </p>
+                <p style="font-size: 12px; margin-top: 10px;">
+                    1日3回まで、ぶらサボれます（それ以上は…<br/>サボりすぎ！？）
+                </p>
+            </div>
+
+            <div id="useful_info_modal" style="font-weight: bold;">
+                <p style="font-size: 16px;">
+                    <span style="font-weight: bold; color: deeppink; font-size: 16px;">スマホのホーム画面に追加すると、
+                        すぐに起動できてとても便利になります。</span>
+                </p>
+
+                <p style="font-size: 14px; margin-top: 10px;">iPhoneの場合 (Safari)</p>
+                <ol style="font-size: 14px; padding-left: 10px; margin-top: 10px;">
+                    <li style="font-size: 14px;">ぶらサボりのトップページで、画面下中央のアイコンをタップ。</li>
+                    <li style="font-size: 14px;">出てきたメニュー内の「ホーム画面に追加」をタップ。</li>
+                    <li style="font-size: 14px;">画面右上の「追加」をタップ。</li>
+                </ol>
+
+                <p style="font-size: 14px; margin-top: 10px;">Androidの場合</p>
+                <ol style="font-size: 14px; padding-left: 10px; margin-top: 10px;">
+                    <li style="font-size: 14px;">ぶらサボりのトップページをブックマーク。</li>
+                    <li style="font-size: 14px;">赤枠で囲ったブックマークアイコンをタップ。</li>
+                    <li style="font-size: 14px;">ブックマークしたページを長押し。</li>
+                    <li style="font-size: 14px;">「ショートカットを作成」をタップ。</li>
+                </ol>
+
+            </div>
+        </div>
+    </body>
+</html>
