@@ -43,7 +43,7 @@ Morning Project Samurai では、特設サイト「ぶらTech (http://mpsamurai.
 ☆マニュアルは、アプリトップページ（http://mpsamurai.org/burasabori/）の「ぶらサボりについて」「はじめ方」「たのしみ方」「便利な使い方」をご参照ください。
 
 ☆開発メンバー
-Junya Kaneko
-Akinori Hayashi
-Masaki Takahashi
+Junya Kaneko,
+Akinori Hayashi,
+Masaki Takahashi,
 Narumi Tomiyama
