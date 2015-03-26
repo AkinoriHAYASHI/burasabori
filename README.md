@@ -41,3 +41,9 @@ https://developer.tokyometroapp.jp/app/229
 Morning Project Samurai では、特設サイト「ぶらTech (http://mpsamurai.org/bura_tech/)」にて、ぶらサボりで使われてた技術の解説を行っていく予定です。興味のある方は是非おたちより下さい。
 
 ☆マニュアルは、アプリトップページ（http://mpsamurai.org/burasabori/）の「ぶらサボりについて」「はじめ方」「たのしみ方」「便利な使い方」をご参照ください。
+
+☆開発メンバー
+Junya Kaneko
+Akinori Hayashi
+Masaki Takahashi
+Narumi Tomiyama
